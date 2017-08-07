@@ -2,7 +2,7 @@
 import win32con
 import win32gui
 import sys
-
+import Clean_DB
 import time
 from selenium import webdriver
 
@@ -10,14 +10,12 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 
-class inital_order:
-    def __init__(self):
-        pass
-
+class inital_order(object):
     @staticmethod
     def inital():
         ff = webdriver.Firefox()
         ff.get('http://192.168.31.99:7385')
+        time.sleep(5)
         ff.find_element_by_xpath(".//*[@id='login-view']/table/tbody/tr[1]/td[2]/input").send_keys('18121225109')
         ff.find_element_by_xpath(".//*[@id='login-view']/table/tbody/tr[2]/td[2]/input").send_keys('123456')
         ff.find_element_by_xpath(".//*[@id='login-view']/button").click()
@@ -41,7 +39,8 @@ class inital_order:
         time.sleep(5)
         ff.find_element_by_xpath(".//*[@id='sidebar']/div[1]/div[1]/ul/li[3]/ul/li[2]/a/span").click()  # 订单处理
         time.sleep(5)
-        ff.find_element_by_xpath(".//*[@id='orderBoxView-shell']/div/div[2]/table/tbody/tr[1]/td[1]/div/i").click()  # 勾选test001
+        ff.find_element_by_xpath(
+            ".//*[@id='orderBoxView-shell']/div/div[2]/table/tbody/tr[1]/td[1]/div/i").click()  # 勾选test001
         ff.find_element_by_xpath(".//*[@id='js-auto-split']/span").click()  # 转为工单
         time.sleep(2)
         ff.find_element_by_xpath(".//*[@id='dialogs-shell']/div[4]/div/div/div[3]/button[2]").click()  # 确定
@@ -53,6 +52,3 @@ class inital_order:
         time.sleep(5)
         ff.save_screenshot("e:\\test.png")
         ff.close()
-
-if __name__ == "__main__":
-    inital_order.inital()

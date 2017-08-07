@@ -21,6 +21,7 @@ class inital_order(object):
         ff.find_element_by_xpath(".//*[@id='login-view']/button").click()
         ff.implicitly_wait(10)
         ff.find_element_by_xpath(".//*[@id='main-container']/div[2]/div/div/div/div[2]/div/div/a[2]").click()  # 订单设置
+        time.sleep(5)
         ff.find_element_by_xpath(".//*[@id='orderBoxView-shell']/div/div[1]/div/div/a").click()  # 导入
         ff.find_element_by_xpath(".//*[@id='orderBoxView-shell']/div/div[1]/div/div/ul/li[1]/a").click()  # 普通
         time.sleep(5)

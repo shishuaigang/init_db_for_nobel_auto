@@ -2,7 +2,6 @@
 import win32con
 import win32gui
 import sys
-import Clean_DB
 import time
 from selenium import webdriver
 
